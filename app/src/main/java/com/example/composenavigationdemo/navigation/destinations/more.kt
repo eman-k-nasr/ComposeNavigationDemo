@@ -5,44 +5,43 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.example.composenavigationdemo.navigation.Routes
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import ksp.destinations.HomeComposableDestination
+import ksp.destinations.ProfileComposableDestination
+import ksp.destinations.SettingsComposableDestination
 
-fun NavGraphBuilder.moreDestination(navController: NavController){
-    composable(
-        route = Routes.more
-    ){
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+@MoreNavGraph(start = true)
+@Destination
+@Composable
+fun MoreComposable(navigator: DestinationsNavigator){
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("More Screen")
+
+        Button(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            onClick = { navigator.navigate(SettingsComposableDestination) },
         ) {
-            Text("More Screen")
-
-            Button(
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                onClick = { navController.navigate(route = Routes.settings) },
-            ) {
-                Text(text = "Go to Settings")
-            }
-
-            Button(
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                onClick = { navController.navigate(route = Routes.profile) },
-            ) {
-                Text(text = "Go to Profile")
-            }
-
-            Button(onClick = { navController.popBackStack(Routes.home,false) }
-            ) {
-                Text(text = "Go back")
-            }
+            Text(text = "Go to Settings")
         }
 
-    }
+        Button(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            onClick = { navigator.navigate(ProfileComposableDestination) },
+        ) {
+            Text(text = "Go to Profile")
+        }
 
+        Button(onClick = { navigator.popBackStack(HomeComposableDestination,false) }
+        ) {
+            Text(text = "Go back")
+        }
+    }
 }

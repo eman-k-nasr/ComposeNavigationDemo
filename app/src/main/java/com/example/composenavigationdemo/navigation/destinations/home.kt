@@ -5,34 +5,37 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
-import com.example.composenavigationdemo.navigation.Routes
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import ksp.destinations.ItemsComposableDestination
+import ksp.destinations.MoreComposableDestination
 
-fun NavGraphBuilder.homeDestination(navController: NavController){
-    composable(route = Routes.home){
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = CenterHorizontally
+@HomeNavGraph(start = true)
+@RootNavGraph(start = true)
+@Destination
+@Composable
+fun HomeComposable(navigator: DestinationsNavigator){
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = CenterHorizontally
+    ) {
+        Text(text = "Home Screen")
+        Button(
+            modifier = Modifier.align(CenterHorizontally),
+            onClick = { navigator.navigate(ItemsComposableDestination) },
         ) {
-            Text(text = "Home Screen")
-            Button(
-                modifier = Modifier.align(CenterHorizontally),
-                onClick = { navController.navigate(route = Routes.items) },
-            ) {
-                Text(text = "Go to Items")
-            }
-
-            Button(
-                onClick = { navController.navigate(route = Routes.moreNavGraph) },
-            ) {
-                Text(text = "Go to More")
-            }
+            Text(text = "Go to Items")
         }
 
+        Button(
+            onClick = { navigator.navigate(MoreComposableDestination) },
+        ) {
+            Text(text = "Go to More")
+        }
     }
 }
