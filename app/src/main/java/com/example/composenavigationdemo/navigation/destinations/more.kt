@@ -8,6 +8,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.composenavigationdemo.model.Info
+import com.example.composenavigationdemo.model.State
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import ksp.destinations.HomeComposableDestination
@@ -27,7 +29,18 @@ fun MoreComposable(navigator: DestinationsNavigator){
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = { navigator.navigate(SettingsComposableDestination) },
+            onClick = { navigator.navigate(
+                SettingsComposableDestination(
+                    info = Info(
+                        name = "settings info",
+                        state = State(
+                            type = "type A",
+                            data = arrayListOf("a","b","c")
+                        )
+                    )
+                )
+            )
+            },
         ) {
             Text(text = "Go to Settings")
         }
