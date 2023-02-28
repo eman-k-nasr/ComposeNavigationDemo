@@ -23,8 +23,12 @@ No need to learn a whole new framework to navigate - most APIs are either the sa
   - we have the home screen which represent start destination of this graph.
   - we can navigate to items screen from home screen and then navigate to details screen.
   - we have also the option to navigate back to home screen.
+
+<img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/home.png?raw=true"/> <img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/items.png?raw=true"/> <img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/details.png?raw=true"/> 
+
 - More Graph contains these destinations [more(start), profile, settings].
   - we have the more screen which represent start destination of this graph.
   - we can navigate to profile/settings screen with arguments from more screen.
   - we have also the option to navigate back to more screen.
 
+<img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/more.png?raw=true"/> <img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/profile.png?raw=true"/> <img height="250" width="150" src="https://github.com/eman-k-nasr/ComposeNavigationDemo/blob/master/settings.png?raw=true"/> 
