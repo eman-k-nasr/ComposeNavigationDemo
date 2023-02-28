@@ -34,7 +34,9 @@ fun MoreComposable(navigator: DestinationsNavigator){
 
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            onClick = { navigator.navigate(ProfileComposableDestination) },
+            onClick = {
+                navigator.navigate(ProfileComposableDestination(username = "eman", email = "eman@google.com"))
+            },
         ) {
             Text(text = "Go to Profile")
         }

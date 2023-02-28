@@ -55,6 +55,7 @@ dependencies {
 
     //destination navigation compose
     implementation 'io.github.raamcosta.compose-destinations:core:1.7.34-beta'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.1'
     ksp 'io.github.raamcosta.compose-destinations:ksp:1.7.34-beta'
 
     //navigation component support for compose
